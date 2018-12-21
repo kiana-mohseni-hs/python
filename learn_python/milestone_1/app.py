@@ -38,28 +38,22 @@ def add_movie():
     print (movies)
     return
 
-
+def movie_finder(search_property, search_value):
+    found = []
+    for movie in movies:
+        if movie[search_property] == search_value:
+            found.append(movie)
+    return (found)
 
 def search_movie():
-    director = movies[0]['director']
-    print (movies)
-    print (director)
-    search_criteria = input (f'which criteria are you searching? ')
-    print (search_criteria)
-    search_key = input (f'which {search_criteria} are you looking for?')
-    print (search_key)
-    search_list = []
-    print (search_list)
-    search_list.append(search_key)
-    print (search_list)
-    results_list = []
-    for i in range (len(movies)):
-        if search_key == movies[i][search_criteria]:
-            results_list.append(movies[i])
-    print (results_list)
+    search_property = input (f'which property are you searching by? ')
+    search_key = input (f'which {search_property} are you looking for?')
+    movie_list = movie_finder(search_property, search_key)
+    print (movie_list)
     return
 
-while True:
+user_input = ''
+while user_input != 'q':
     user_input = input ('Enter a to add a movie, l to list movies, f to find, q to quit.')
     print(user_input)
     if user_input == 'a':
@@ -68,5 +62,4 @@ while True:
         search_movie()
     elif user_input == 'l':
         print('list function')
-    elif user_input == 'q':
-        Break
+
