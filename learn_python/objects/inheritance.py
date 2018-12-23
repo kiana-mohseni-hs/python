@@ -115,3 +115,27 @@ There are many magic “dunder” methods you can implement, including some to o
 
 We’ll be learning about all this throughout the course!
 """
+
+class Fixedfloat:
+    def __init__(self, amount):
+        self.amount = amount
+
+    def __repr__(self):
+        return f'<Fixedfloat {self.amount:.2f}>'
+
+    @classmethod
+    def from_sum(cls, var1, var2):
+        return cls(var1 + var2)
+
+print(Fixedfloat(18.888))
+
+class Euro(Fixedfloat):
+    def __init__(self, amount):
+        super().__init__(amount)
+        self.symbol = 'Eur'
+
+    def __repr__(self):
+        return f'<Euro {self.symbol} {self.amount:.2f}>'
+
+money = Euro.from_sum(18.888, 1.1)
+print (money)
