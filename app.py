@@ -4,6 +4,7 @@ file_content = my_file.read()
 my_file.close()
 
 print(file_content)
+print(file_content)
 
 user_name = input('Enter your name: ')
 
