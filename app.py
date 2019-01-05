@@ -1,14 +1,19 @@
-my_file = open('data.txt', 'r')
-file_content = my_file.read()
+import json
 
-my_file.close()
+json_list = []  # store the converted json data for each line
+csv_file = open('csv_file.txt', 'r')
 
-print(file_content)
-print(file_content)
+for line in csv_file.readlines():
+    club, city, country = line.strip().split(',')  # first get rid of the \n and then split with ','
+    data = {
+        'club': club,
+        'city': city,
+        'country': country
+    }
+    json_list.append(data)
 
-user_name = input('Enter your name: ')
+csv_file.close()
 
-my_file_writing = open('data.txt', 'w')
-my_file_writing.write(user_name)
-
-my_file_writing.close()
+json_file = open('json_file.txt', 'w')
+json.dump(json_list, json_file)  # write json data to a file
+json_file.close()
